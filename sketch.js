@@ -94,13 +94,21 @@ function draw() {
      
    }
 
+ 
+   if ( gameState =="end") {
+    
+    textSize(100);
+    text("GameOver", 150, 250);
+    //return
+  }
 
  
    
 
    if(particle!==null){
      particle.display();
-     
+     if (particle.body.position.y>760)
+     {
      if (particle.body.position.x < 300) 
               {
                   score=score+500;      
@@ -118,7 +126,7 @@ function draw() {
               if ( turn>= 5) gameState ="end";
             }
         
-    
+          }
 }
  
 
@@ -130,11 +138,11 @@ function draw() {
 
 
 function keyPressed(){
-  if(gameState!=="end"&&keyCode===32){
+  if(gameState!=="end" && keyCode===32 && particle===null){
     turn=turn+1;
     particle=new Particle(random(10,width-10),0,10);
     
    
   }
-      console.log("hello");
+     
 }
